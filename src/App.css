@@ -1,38 +1,102 @@
-.App {
-  text-align: center;
+body {
+  background-color: #f9f9f9;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/*********************************** Iconos ***********************************/
+
+.iconoReverso {
+  transform: rotate(180deg);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/*********************************** HEADER ***********************************/
+header ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+header {
+  background-color: #ffffff;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+header img {
+  height: 30px;
+  width: 24px;
 }
 
-.App-link {
-  color: #61dafb;
+/*********************************** MAIN ***********************************/
+
+.contenedorBasico {
+  background-color: #ffffff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/*********************************** Grafica ***********************************/
+.grafica {
+  height: 362px;
+}
+
+.textoPrincipal {
+  font-weight: 600;
+  font-size: 1.7rem;
+}
+
+.textoSecundario {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #a8a8a8;
+}
+
+.textoBeneficio {
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: #96bf79;
+}
+
+.lista {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.boton {
+  border: 3px solid;
+  border-collapse: collapse;
+  border-color: #f7f7f7;
+  background-color: #ffffff;
+  color: #a8a8a8;
+}
+
+.botonActivo,
+.boton:hover {
+  background-color: #eff3fe;
+  border: 3px solid;
+  border-collapse: collapse;
+  border-color: #8ca0e2;
+  color: #8ca0e2;
+  font-weight: 700;
+}
+
+/*********************************** Transacciones ***********************************/
+
+article .transaccion {
+  background-color: #ffffff;
+}
+.movimientos article .fecha {
+  font-weight: 700;
+  color: #a8a8a8;
+}
+.estadoTransaccion {
+  font-weight: 700;
+}
+
+.momentoTransaccion {
+  color: #a8a8a8;
+  font-weight: 600;
+}
+
+.beneficio {
+  color: #96bf79;
+}
+
+.envio {
+  color: lightcoral;
 }
