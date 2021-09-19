@@ -1,7 +1,7 @@
 import { useState } from "react/cjs/react.development";
 import { FormularioTransferencia } from "./FormularioTransferencia";
 
-export const BotonesTransferencias = () => {
+export const BotonesTransferencias = (props) => {
   const [formularioActivo, setFormularioActivo] = useState(false);
   const revertirSend = () => {
     setFormularioActivo(!formularioActivo);

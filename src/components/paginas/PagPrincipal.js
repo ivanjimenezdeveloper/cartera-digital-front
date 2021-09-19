@@ -7,6 +7,10 @@ import { Movimientos } from "../Movimientos";
 
 export const PagPrincipal = () => {
   const [saldo, setSaldo] = useState(0);
+  const [movimientos, setMovimientos] = useState([]);
+  const [movimientosSeleccionados, setMovimientosSeleccionados] =
+    useState("Week");
+
   const getSaldo = async () => {
     const token = localStorage.getItem("token");
     const { usuario } = jwtDecode(token);
@@ -26,11 +30,35 @@ export const PagPrincipal = () => {
   useEffect(() => {
     getSaldo();
   });
+
+  const getMovimientos = async () => {
+    const token = localStorage.getItem("token");
+    const { usuario } = jwtDecode(token);
+
+    const resp = await fetch(
+      `http://localhost:4000/transaccion/semana/${usuario._id}`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    setMovimientos(await resp.json());
+  };
+
+  useEffect(() => getMovimientos(), []);
   return (
     <>
-      <Grafica saldo={saldo} />
+      <Grafica
+        saldo={saldo}
+        movimientosSeleccionados={movimientosSeleccionados}
+        setMovimientosSeleccionados={setMovimientosSeleccionados}
+        movimientos={movimientos}
+      />
       <BotonesTransferencias />
-      <Movimientos />
+      <Movimientos movimientos={movimientos} />
     </>
   );
 };
