@@ -1,4 +1,5 @@
-export const Grafica = () => {
+export const Grafica = (props) => {
+  const { saldo } = props;
   return (
     <section className="row m-1 contenedorBasico mt-3">
       <div className="grafica w-100 col-sm-12 mt-1">
@@ -6,7 +7,7 @@ export const Grafica = () => {
           <div className="col-sm-12">
             <div className="row">
               <div className="col-8">
-                <span className="m-0 textoPrincipal">*** DOGE</span>
+                <span className="m-0 textoPrincipal">{saldo} DOGE</span>
               </div>
               <div className="col-4">
                 <img
