@@ -1,9 +1,19 @@
+import { useState } from "react/cjs/react.development";
+import { FormularioTransferencia } from "./FormularioTransferencia";
+
 export const BotonesTransferencias = () => {
+  const [formularioActivo, setFormularioActivo] = useState(false);
+  const revertirSend = () => {
+    setFormularioActivo(!formularioActivo);
+  };
   return (
     <section className="row">
       <div className="col-12">
         <ul className="lista row justify-content-center">
-          <li className="btn btn-primary col-5 m-1 font-weight-bold">
+          <li
+            className="btn btn-primary col-5 m-1 font-weight-bold"
+            onClick={() => revertirSend()}
+          >
             <img alt="imagen enviar" src="img\icons8-send-letter-50.png" />
             Send
           </li>
@@ -17,23 +27,7 @@ export const BotonesTransferencias = () => {
           </li>
         </ul>
       </div>
-      <div className="col-12 m-1 mt-3">
-        <form className="contenedorBasico pb-2">
-          <div className="col form-group pt-4">
-            <label htmlFor="name">Dirección</label>
-            <input type="text" className="mb-4 d-block form-control" />
-          </div>
-          <div className="col form-group pt-4">
-            <label htmlFor="name">Cantidad</label>
-            <input type="text" className="mb-4 d-block form-control" />
-          </div>
-          <div className="text-center">
-            <button type="submit" className="btn btn-primary">
-              Enviar
-            </button>
-          </div>
-        </form>
-      </div>
+      {formularioActivo && <FormularioTransferencia />}
     </section>
   );
 };

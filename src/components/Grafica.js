@@ -19,7 +19,7 @@ export const Grafica = (props) => {
             </div>
           </div>
           <div className="col-sm-12">
-            <span className="textoSecundario">$***</span>
+            <span className="textoSecundario">${saldo * 0.24}</span>
           </div>
           <div className="col-sm-12">
             <span className="textoBeneficio">(+*** DOGE)</span>
