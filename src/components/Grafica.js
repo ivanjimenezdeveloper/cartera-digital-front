@@ -25,7 +25,9 @@ export const Grafica = (props) => {
           <div className="col-sm-12">
             <div className="row">
               <div className="col-8">
-                <span className="m-0 textoPrincipal">{saldo} DOGE</span>
+                <span className="m-0 textoPrincipal">
+                  {saldo.toFixed(2)} DOGE
+                </span>
               </div>
               <div className="col-4">
                 <img
@@ -37,11 +39,17 @@ export const Grafica = (props) => {
             </div>
           </div>
           <div className="col-sm-12">
-            <span className="textoSecundario">${saldo * 0.24}</span>
+            <span className="textoSecundario">
+              ${(saldo * 0.24).toFixed(2)}
+            </span>
           </div>
           <div className="col-sm-12">
-            <span className="textoBeneficio">
-              ({`${saldoCambio > 0 ? "+" : ""} ${saldoCambio}`} DOGE)
+            <span
+              className={`${
+                saldoCambio > 0 ? "textoBeneficio" : "textoPerdida"
+              }`}
+            >
+              ({`${saldoCambio > 0 ? "+" : ""} ${saldoCambio.toFixed(2)}`} DOGE)
             </span>
           </div>
         </div>

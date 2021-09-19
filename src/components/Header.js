@@ -1,9 +1,14 @@
 export const Header = (props) => {
+  const { setLogeado } = props;
+  const deslogear = () => {
+    localStorage.removeItem("token");
+    setLogeado(false);
+  };
   return (
     <header className="row">
       <div className="col-12">
         <ul className="row h-100">
-          <li className="col my-auto">
+          <li className="col my-auto" onClick={() => deslogear()}>
             <img alt="boton atras" src="img\icons8-back-arrow-50.png" />
           </li>
           <li className="col my-auto">

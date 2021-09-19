@@ -51,6 +51,12 @@ header img {
   color: #96bf79;
 }
 
+.textoPerdida {
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: lightcoral;
+}
+
 .lista {
   list-style: none;
   margin-left: 0;

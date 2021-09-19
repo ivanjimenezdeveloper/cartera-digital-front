@@ -1,3 +1,9 @@
+import {
+  getDiaDelMes,
+  getHoraString,
+  getStringMovimiento,
+} from "../utilities/fechas";
+
 export const Movimientos = (props) => {
   const { movimientos } = props;
 
@@ -7,7 +13,9 @@ export const Movimientos = (props) => {
     const icono = movimiento.tipo === "Recieved" ? "iconoReverso" : "";
     return (
       <article className="col-sm-12" key={movimiento.fecha}>
-        <div className="row fecha pl-2 mb-2">{movimiento.fecha} - Today</div>
+        <div className="row fecha pl-2 mb-2">
+          {getStringMovimiento(movimiento.fecha)}
+        </div>
         <div className="row transaccion py-2">
           <div className="col-2">
             <img
@@ -27,10 +35,12 @@ export const Movimientos = (props) => {
             </div>
             <div className="row">
               <span className="col momentoTransaccion">
-                {movimiento.tipo} at 01:22 AM
+                {movimiento.tipo} at {getHoraString(movimiento.fecha)}
               </span>
               <div className="col">
-                <span className="float-right font-weight-bold">+$***</span>
+                <span className="float-right font-weight-bold">{`${simbolo} $${
+                  movimiento.cantidad * 0.24
+                }`}</span>
               </div>
             </div>
           </div>

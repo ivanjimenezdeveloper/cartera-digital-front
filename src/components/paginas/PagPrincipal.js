@@ -1,5 +1,5 @@
 import jwtDecode from "jwt-decode";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useState } from "react/cjs/react.development";
 import { BotonesTransferencias } from "../BotonesTransferencias";
 import { Grafica } from "../Grafica";
@@ -27,16 +27,23 @@ export const PagPrincipal = () => {
     setSaldo(await resp.json());
   };
 
-  useEffect(() => {
-    getSaldo();
-  });
-
-  const getMovimientos = async () => {
+  const getMovimientos = useCallback(async () => {
     const token = localStorage.getItem("token");
     const { usuario } = jwtDecode(token);
+    const apiLlamada = (movimientosSeleccionados) => {
+      if (movimientosSeleccionados === "Month") {
+        return "mes";
+      } else if (movimientosSeleccionados === "Year") {
+        return "anyo";
+      }
+
+      return "semana";
+    };
 
     const resp = await fetch(
-      `http://localhost:4000/transaccion/semana/${usuario._id}`,
+      `http://localhost:4000/transaccion/${apiLlamada(
+        movimientosSeleccionados
+      )}/${usuario._id}`,
       {
         method: "GET",
         headers: {
@@ -46,9 +53,13 @@ export const PagPrincipal = () => {
     );
 
     setMovimientos(await resp.json());
-  };
+  }, [movimientosSeleccionados]);
 
-  useEffect(() => getMovimientos(), []);
+  useEffect(() => {
+    getSaldo();
+  });
+  useEffect(() => getMovimientos(), [getMovimientos]);
+
   return (
     <>
       <Grafica
@@ -57,7 +68,11 @@ export const PagPrincipal = () => {
         setMovimientosSeleccionados={setMovimientosSeleccionados}
         movimientos={movimientos}
       />
-      <BotonesTransferencias />
+      <BotonesTransferencias
+        setSaldo={setSaldo}
+        saldo={saldo}
+        getMovimientos={getMovimientos}
+      />
       <Movimientos movimientos={movimientos} />
     </>
   );

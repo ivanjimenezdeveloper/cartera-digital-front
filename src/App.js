@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="container-fluid">
-      <Header />
+      <Header setLogeado={setLogeado} />
       <main className="row">
         <div className="col">
           {logeado ? <PagPrincipal /> : <Login setLogeado={setLogeado} />}
