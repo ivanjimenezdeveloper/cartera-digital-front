@@ -15,9 +15,9 @@ export const Header = (props) => {
             <IoMdArrowBack className="icono" />
           </li>
           <li className="col my-auto">
-            <div className="row justify-content-center">
+            <div className="row justify-content-center align-items-center">
               <img alt="Logo" src="img\dogecoin-doge-logo-alternative.svg" />
-              <p className="m-0">DogeCoin</p>
+              <span className="m-0 ml-1 font-weight-bold">DogeCoin</span>
             </div>
           </li>
           <li className="col justify-content-end my-auto">
