@@ -1,8 +1,4 @@
-import {
-  getDiaDelMes,
-  getHoraString,
-  getStringMovimiento,
-} from "../utilities/fechas";
+import { getHoraString, getStringMovimiento } from "../utilities/fechas";
 
 export const Movimientos = (props) => {
   const { movimientos } = props;

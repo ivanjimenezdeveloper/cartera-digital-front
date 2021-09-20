@@ -11,24 +11,21 @@ export const FormularioTransferencia = (props) => {
   } = props;
   const [direccion, setDireccion] = useState("");
   const [cantidad, setCantidad] = useState("");
+  const urlAPI = process.env.REACT_APP_API_URL;
 
   const addTransaccion = async (direccion, cantidad, tipo) => {
     const cuerpo = { tipo, cantidad };
     const token = localStorage.getItem("token");
     const { usuario } = jwtDecode(token);
-    const resp = await fetch(
-      `http://localhost:4000/transaccion/movimiento/${usuario._id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(cuerpo),
-      }
-    );
+    const resp = await fetch(`${urlAPI}transaccion/movimiento/${usuario._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(cuerpo),
+    });
     console.log(resp.ok);
-    debugger;
     if (resp.ok) {
       if (tipo === "Recieved") {
         setSaldo(saldo + cantidad);
@@ -65,7 +62,6 @@ export const FormularioTransferencia = (props) => {
             className="btn btn-primary"
             onClick={(e) => {
               e.preventDefault();
-              debugger;
               addTransaccion(
                 direccion,
                 parseFloat(cantidad),

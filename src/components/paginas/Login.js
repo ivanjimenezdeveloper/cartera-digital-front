@@ -5,10 +5,11 @@ export const Login = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({ error: false });
+  const urlAPI = process.env.REACT_APP_API_URL;
 
   const entrar = async (username, password) => {
     const credencials = { username, password };
-    const resp = await fetch("http://localhost:4000/user/login", {
+    const resp = await fetch(`${urlAPI}user/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

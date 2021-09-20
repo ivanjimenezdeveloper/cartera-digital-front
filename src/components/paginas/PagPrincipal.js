@@ -10,20 +10,18 @@ export const PagPrincipal = () => {
   const [movimientos, setMovimientos] = useState([]);
   const [movimientosSeleccionados, setMovimientosSeleccionados] =
     useState("Week");
+  const [urlAPI, setUrlDummy] = useState(process.env.REACT_APP_API_URL);
 
   const getSaldo = async () => {
     const token = localStorage.getItem("token");
     const { usuario } = jwtDecode(token);
 
-    const resp = await fetch(
-      `http://localhost:4000/balance/saldo/${usuario._id}`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const resp = await fetch(`${urlAPI}balance/saldo/${usuario._id}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     setSaldo(await resp.json());
   };
 
@@ -41,9 +39,9 @@ export const PagPrincipal = () => {
     };
 
     const resp = await fetch(
-      `http://localhost:4000/transaccion/${apiLlamada(
-        movimientosSeleccionados
-      )}/${usuario._id}`,
+      `${urlAPI}transaccion/${apiLlamada(movimientosSeleccionados)}/${
+        usuario._id
+      }`,
       {
         method: "GET",
         headers: {
@@ -53,7 +51,7 @@ export const PagPrincipal = () => {
     );
 
     setMovimientos(await resp.json());
-  }, [movimientosSeleccionados]);
+  }, [movimientosSeleccionados, urlAPI]);
 
   useEffect(() => {
     getSaldo();
