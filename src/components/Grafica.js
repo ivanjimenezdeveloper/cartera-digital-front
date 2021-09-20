@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react/cjs/react.development";
 import { getCambioSaldo } from "../utilities/transacciones";
+import { BiHide } from "react-icons/bi";
 
 export const Grafica = (props) => {
   const {
@@ -30,11 +31,7 @@ export const Grafica = (props) => {
                 </span>
               </div>
               <div className="col-4">
-                <img
-                  className="float-right mr-1"
-                  alt="ocultar"
-                  src="img\icons8-hide-30.png"
-                />
+                <BiHide className="float-right mr-1 icono" />
               </div>
             </div>
           </div>

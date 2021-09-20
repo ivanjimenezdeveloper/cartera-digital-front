@@ -23,6 +23,11 @@ header img {
   width: 24px;
 }
 
+header .icono {
+  height: 30px;
+  width: 24px;
+}
+
 /*********************************** MAIN ***********************************/
 
 .contenedorBasico {
@@ -34,6 +39,10 @@ header img {
   height: 362px;
 }
 
+.grafica .icono {
+  height: 30px;
+  width: 24px;
+}
 .textoPrincipal {
   font-weight: 600;
   font-size: 1.7rem;
@@ -105,4 +114,14 @@ article .transaccion {
 
 .envio {
   color: lightcoral;
+}
+
+.iconoBotonGrande {
+  height: 30px;
+  width: auto;
+}
+
+.iconoMovimiento {
+  height: 46px;
+  width: auto;
 }

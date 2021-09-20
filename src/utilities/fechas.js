@@ -43,7 +43,7 @@ const getStringMovimiento = (fecha) => {
 const getHoraString = (fecha) => {
   const fechaFormateada = new Date(fecha);
 
-  var hours = fechaFormateada.getHours();
+  let hours = fechaFormateada.getHours();
   let minutes = fechaFormateada.getMinutes();
   let ampm = hours >= 12 ? "pm" : "am";
   hours = hours % 12;

@@ -1,5 +1,6 @@
 import { useState } from "react/cjs/react.development";
 import { FormularioTransferencia } from "./FormularioTransferencia";
+import { BiArrowToBottom, BiArrowToTop } from "react-icons/bi";
 
 export const BotonesTransferencias = (props) => {
   const { setSaldo, saldo, getMovimientos } = props;
@@ -14,21 +15,17 @@ export const BotonesTransferencias = (props) => {
       <div className="col-12">
         <ul className="lista row justify-content-center">
           <li
-            className="btn btn-primary col-5 m-1 font-weight-bold"
+            className="btn btn-primary col-5 m-1 font-weight-bold "
             onClick={() => revertirFormulario("Sent")}
           >
-            <img alt="imagen enviar" src="img\icons8-send-letter-50.png" />
+            <BiArrowToTop className="iconoBotonGrande mr-1" />
             Send
           </li>
           <li
             className="btn btn-primary col-5 m-1 font-weight-bold"
             onClick={() => revertirFormulario("Recieved")}
           >
-            <img
-              className="iconoReverso"
-              alt="imagen recibir"
-              src="img\icons8-send-letter-50.png"
-            />
+            <BiArrowToBottom className="iconoBotonGrande mr-1" />
             Recieve
           </li>
         </ul>

@@ -1,4 +1,5 @@
 import { getHoraString, getStringMovimiento } from "../utilities/fechas";
+import { BiArrowToBottom, BiArrowToTop } from "react-icons/bi";
 
 export const Movimientos = (props) => {
   const { movimientos } = props;
@@ -6,7 +7,6 @@ export const Movimientos = (props) => {
   const renderizarMovimiento = (movimiento) => {
     const simbolo = movimiento.tipo === "Recieved" ? "+" : "-";
     const color = movimiento.tipo === "Recieved" ? "beneficio" : "envio";
-    const icono = movimiento.tipo === "Recieved" ? "iconoReverso" : "";
     return (
       <article className="col-sm-12" key={movimiento.fecha}>
         <div className="row fecha pl-2 mb-2">
@@ -14,11 +14,11 @@ export const Movimientos = (props) => {
         </div>
         <div className="row transaccion py-2">
           <div className="col-2">
-            <img
-              className={`${icono}`}
-              alt="imagen recibido"
-              src="img\icons8-send-letter-50.png"
-            />
+            {movimiento.tipo === "Recieved" ? (
+              <BiArrowToBottom className="iconoMovimiento" />
+            ) : (
+              <BiArrowToTop className="iconoMovimiento" />
+            )}{" "}
           </div>
           <div className="col-10">
             <div className="row">
@@ -34,9 +34,9 @@ export const Movimientos = (props) => {
                 {movimiento.tipo} at {getHoraString(movimiento.fecha)}
               </span>
               <div className="col">
-                <span className="float-right font-weight-bold">{`${simbolo} $${
+                <span className="float-right font-weight-bold">{`${simbolo} $${(
                   movimiento.cantidad * 0.24
-                }`}</span>
+                ).toFixed(2)}`}</span>
               </div>
             </div>
           </div>
@@ -44,6 +44,7 @@ export const Movimientos = (props) => {
       </article>
     );
   };
+
   return (
     <section className="row movimientos">
       {movimientos.map((movimiento) => renderizarMovimiento(movimiento))}
