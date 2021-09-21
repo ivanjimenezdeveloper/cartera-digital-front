@@ -14,9 +14,11 @@ export const FormularioTransferencia = (props) => {
   const urlAPI = process.env.REACT_APP_API_URL;
 
   const addTransaccion = async (direccion, cantidad, tipo) => {
+    cantidad = comprobacionCantidadCorrecta(tipo, cantidad);
     const cuerpo = { tipo, cantidad };
     const token = localStorage.getItem("token");
     const { usuario } = jwtDecode(token);
+
     const resp = await fetch(`${urlAPI}transaccion/movimiento/${usuario._id}`, {
       method: "PUT",
       headers: {
@@ -37,6 +39,15 @@ export const FormularioTransferencia = (props) => {
     }
   };
 
+  const comprobacionCantidadCorrecta = (tipo, cantidad) => {
+    if (tipo === "Recieved" && cantidad < 0) {
+      cantidad = cantidad * -1;
+    } else if (tipo === "Sent" && cantidad < 0) {
+      cantidad = cantidad * -1;
+    }
+
+    return cantidad;
+  };
   return (
     <div className="col-12 m-1 mt-3">
       <form className="contenedorBasico pb-2">
