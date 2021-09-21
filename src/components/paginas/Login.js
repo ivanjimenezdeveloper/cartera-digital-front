@@ -27,10 +27,10 @@ export const Login = (props) => {
     }
   };
   return (
-    <section className="row">
-      <div className="col-12 m-1 mt-3">
-        <form className="contenedorBasico pb-2">
-          <div className="col form-group pt-4">
+    <section className="row m-1">
+      <div className="col-12  mt-3 ">
+        <form className="contenedorBasico pb-2 row">
+          <div className="col-sm-12 form-group pt-4">
             <label htmlFor="name">Usuario</label>
             <input
               type="text"
@@ -38,7 +38,7 @@ export const Login = (props) => {
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
-          <div className="col form-group pt-4">
+          <div className="col-sm-12 form-group pt-4">
             <label htmlFor="name">Password</label>
             <input
               type="password"
@@ -46,18 +46,22 @@ export const Login = (props) => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <div className="text-center">
-            {error && error.mensaje}
-            <button
-              type="submit"
-              className="btn btn-primary"
-              onClick={(e) => {
-                e.preventDefault();
-                entrar(username, password);
-              }}
-            >
-              Login
-            </button>
+          <div className="text-center col-12">
+            <div>
+              <button
+                type="submit"
+                className="btn btn-primary"
+                onClick={(e) => {
+                  e.preventDefault();
+                  entrar(username, password);
+                }}
+              >
+                Login
+              </button>
+            </div>
+            <span className="col-12 text-danger font-weight-bold">
+              {error && error.mensaje}
+            </span>
           </div>
         </form>
       </div>
