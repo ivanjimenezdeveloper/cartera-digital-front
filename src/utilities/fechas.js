@@ -20,7 +20,7 @@ const getDiaDelMes = (fecha) => {
 const diasHastaHoy = (fecha) =>
   Math.round((new Date() - fecha) / (1000 * 60 * 60 * 24));
 
-const getStringMovimiento = (fecha) => {
+export const getStringMovimiento = (fecha) => {
   const fechaFormateada = new Date(fecha);
   const diasDiferencia = diasHastaHoy(fechaFormateada);
   const stringDiasDiferencia = (diasDiferencia) => {
@@ -40,7 +40,7 @@ const getStringMovimiento = (fecha) => {
   )}`;
 };
 
-const getHoraString = (fecha) => {
+export const getHoraString = (fecha) => {
   const fechaFormateada = new Date(fecha);
 
   let hours = fechaFormateada.getHours();
@@ -51,8 +51,4 @@ const getHoraString = (fecha) => {
   minutes = minutes < 10 ? "0" + minutes : minutes;
   let strTime = hours + ":" + minutes + " " + ampm;
   return strTime;
-};
-module.exports = {
-  getStringMovimiento,
-  getHoraString,
 };
