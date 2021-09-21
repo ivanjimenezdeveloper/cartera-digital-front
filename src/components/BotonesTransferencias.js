@@ -1,4 +1,4 @@
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 import { FormularioTransferencia } from "./FormularioTransferencia";
 import { BiArrowToBottom, BiArrowToTop } from "react-icons/bi";
 
