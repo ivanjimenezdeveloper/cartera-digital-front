@@ -9,7 +9,7 @@ export const PagPrincipal = () => {
   const [movimientos, setMovimientos] = useState([]);
   const [movimientosSeleccionados, setMovimientosSeleccionados] =
     useState("Week");
-  const [urlAPI, setUrlDummy] = useState(process.env.REACT_APP_API_URL);
+  const [urlAPI] = useState(process.env.REACT_APP_API_URL);
 
   const getSaldo = async () => {
     const token = localStorage.getItem("token");
