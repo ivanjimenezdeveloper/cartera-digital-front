@@ -14,6 +14,7 @@ export const FormularioTransferencia = (props) => {
   const urlAPI = process.env.REACT_APP_API_URL;
 
   const addTransaccion = async (direccion, cantidad, tipo) => {
+    debugger;
     cantidad = comprobacionCantidadCorrecta(tipo, cantidad);
     const cuerpo = { tipo, cantidad };
     const token = localStorage.getItem("token");
