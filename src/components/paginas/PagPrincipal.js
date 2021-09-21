@@ -1,6 +1,5 @@
 import jwtDecode from "jwt-decode";
-import { useCallback, useEffect } from "react";
-import { useState } from "react/cjs/react.development";
+import { useCallback, useEffect, useState } from "react";
 import { BotonesTransferencias } from "../BotonesTransferencias";
 import { Grafica } from "../Grafica";
 import { Movimientos } from "../Movimientos";

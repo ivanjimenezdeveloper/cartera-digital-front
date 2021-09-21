@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react/cjs/react.development";
+import { useState, useEffect } from "react";
 import { BiHide } from "react-icons/bi";
 import { getCambioSaldo } from "../utilities/transacciones";
 
