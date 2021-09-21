@@ -28,7 +28,6 @@ export const FormularioTransferencia = (props) => {
       },
       body: JSON.stringify(cuerpo),
     });
-    console.log(resp.ok);
     if (resp.ok) {
       if (tipo === "Recieved") {
         setSaldo(saldo + cantidad);
